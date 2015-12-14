@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class List0 extends ListsA
 {
     private int[] ar = null;
@@ -44,7 +42,8 @@ public class List0 extends ListsA
     }
 
     @Override
-    int[] toArray() {
+    int[] toArray()
+    {
         int[] tmp = new int[this.ar.length];
         for (int i = 0; i < this.ar.length; i++)
         {
@@ -150,7 +149,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int min()
+    int minValue()
     {
         int min = this.ar[0];
         for (int i = 0; i < this.ar.length; i++)
@@ -164,7 +163,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int max()
+    int maxValue()
     {
         int min = this.ar[0];
         for (int i = 0; i < this.ar.length; i++)
@@ -219,16 +218,13 @@ public class List0 extends ListsA
     @Override
     void halfRevers()
     {
-        int[] tmp = new int[this.ar.length];
         int half = this.ar.length / 2;
-        System.out.println("half: " + half);
-        for (int i = half; i < this.ar.length; i++) {
-            tmp[i] = this.ar[i];
-            System.out.println("1 tmp: " + Arrays.toString(tmp));
-        }
-        for (int i = 0; i < half; i++) {
-            tmp[i] = this.ar[i];
-            System.out.println("2 tmp: " + Arrays.toString(tmp));
+        int next = half + this.ar.length % 2;
+        for (int i = 0; i < half; i++)
+        {
+            int tmp = this.ar[i];
+            this.ar[i] = this.ar[i + next];
+            this.ar[i + next] = tmp;
         }
     }
 

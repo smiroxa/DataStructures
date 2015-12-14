@@ -1,8 +1,7 @@
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
-
+import static org.junit.Assert.assertEquals;
 
 public class ListTest
 {
@@ -139,7 +138,7 @@ public class ListTest
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
         this.list0.init(testArr);
-        int act = this.list0.min();
+        int act = this.list0.minValue();
         assertEquals(10, act);
     }
 
@@ -148,7 +147,7 @@ public class ListTest
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
         this.list0.init(testArr);
-        int act = this.list0.max();
+        int act = this.list0.maxValue();
         assertEquals(100, act);
     }
 
@@ -180,15 +179,15 @@ public class ListTest
         assertArrayEquals(new int[] {100,90,80,70,60,50,40,30,20,10}, act);
     }
 
-//    @Test
-//    public void halfReversTest01()
-//    {
-//        int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100,110};
-//        this.list0.init(testArr);
-//        this.list0.halfRevers();
-//        int[] act = this.list0.toArray();
-//        assertArrayEquals(new int[] {100,90,80,70,60,50,40,30,20,10}, act);
-//    }
+    @Test
+    public void halfReversTest01()
+    {
+        int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100,110};
+        this.list0.init(testArr);
+        this.list0.halfRevers();
+        int[] act = this.list0.toArray();
+        assertArrayEquals(new int[] {70,80,90,100,110,60,10,20,30,40,50}, act);
+    }
 
     @Test
     public void sortTest01()
