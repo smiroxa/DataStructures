@@ -1,4 +1,4 @@
-public class List1 extends ListsA
+public class List1 extends ListA
 {
     private int[] ar = new int[10];
     private int top = 10;
@@ -13,18 +13,18 @@ public class List1 extends ListsA
     }
 
     @Override
-    int size() {
+    public int size() {
         return this.top;
     }
 
     @Override
-    void clear()
+    public void clear()
     {
         this.top = 0;
     }
 
     @Override
-    void init(int[] ini)
+    public void init(int[] ini)
     {
         if(ini == null)
         {
@@ -38,7 +38,7 @@ public class List1 extends ListsA
     }
 
     @Override
-    int[] toArray()
+    public int[] toArray()
     {
         int[] tmp = new int[size()];
         for (int i = 0; i < size(); i++)
@@ -49,18 +49,18 @@ public class List1 extends ListsA
     }
 
     @Override
-    void set(int pos, int val)
+    public void set(int pos, int val)
     {
         this.ar[pos] = val;
     }
 
     @Override
-    int get(int pos) {
+    public int get(int pos) {
         return this.ar[pos];
     }
 
     @Override
-    void addStart(int val)
+    public void addStart(int val)
     {
         for (int i = top; i > 0; i--)
         {
@@ -71,63 +71,63 @@ public class List1 extends ListsA
     }
 
     @Override
-    void addEnd(int val)
+    public void addEnd(int val)
     {
         ar[top++] = val;
     }
 
     @Override
-    void addPos(int pos, int val) {
-
+    public void addPos(int pos, int val)
+    {
     }
 
     @Override
-    int delStart() {
+    public int delStart() {
         return 0;
     }
 
     @Override
-    int delEnd() {
+    public int delEnd() {
         return ar[--top];
     }
 
     @Override
-    int delPos(int pos) {
+    public int delPos(int pos) {
         return 0;
     }
 
     @Override
-    int minValue() {
+    public int minValue() {
         return 0;
     }
 
     @Override
-    int maxValue() {
+    public int maxValue() {
         return 0;
     }
 
     @Override
-    int minIndex() {
+    public int minIndex() {
         return 0;
     }
 
     @Override
-    int maxIndex() {
+    public int maxIndex() {
         return 0;
     }
 
     @Override
-    void reverse() {
+    public void reverse() {
 
     }
 
     @Override
-    void halfRevers() {
+    public void halfRevers() {
 
     }
 
     @Override
-    void sort() {
+    public void sort() {
 
     }
 }

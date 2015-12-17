@@ -1,52 +1,122 @@
-public class BTree
+public class BTree extends ListA
 {
-    int size()  // размер дерева
+    public int size()  // размер дерева
     {
         return 0;
     }
 
-    int nodes() // количество узлов которые имеют хотя бы одного потомка
+    public int nodes() // количество узлов которые имеют хотя бы одного потомка
     {
         return 0;
     }
 
-    int leafs() // количество узлов которые не имеют ни одного потомка
+    public int leafs() // количество узлов которые не имеют ни одного потомка
     {
         return 0;
     }
 
-    int height () // высота дерева (количесвто узлов снизу вверх)
+    public int height () // высота дерева (количесвто узлов снизу вверх)
     {
         return 0;
     }
 
-    int width() // ширина узлов (вывести количество узлов на самом широком уровне)
+    public int width() // ширина узлов (вывести количество узлов на самом широком уровне)
     {
         return 0;
     }
 
-    void clear()
+    public void clear()
     {
 
     }
 
-    void init (int[] ini)
+    public void init (int[] ini)
     {
 
     }
 
-    void reverse()
+    public void reverse()
     {
 
     }
 
-    void del(int val)
+    @Override
+    public void halfRevers() {
+
+    }
+
+    @Override
+    public void sort() {
+
+    }
+
+    public void del(int val)
     {
 
     }
 
-    int[] toArray()
+    public int[] toArray()
     {
         return new int[0];
+    }
+
+    @Override
+    public void set(int pos, int val) {
+
+    }
+
+    @Override
+    public int get(int pos) {
+        return 0;
+    }
+
+    @Override
+    public void addStart(int val) {
+
+    }
+
+    @Override
+    public void addEnd(int val) {
+
+    }
+
+    @Override
+    public void addPos(int pos, int val) {
+
+    }
+
+    @Override
+    public int delStart() {
+        return 0;
+    }
+
+    @Override
+    public int delEnd() {
+        return 0;
+    }
+
+    @Override
+    public int delPos(int pos) {
+        return 0;
+    }
+
+    @Override
+    public int minValue() {
+        return 0;
+    }
+
+    @Override
+    public int maxValue() {
+        return 0;
+    }
+
+    @Override
+    public int minIndex() {
+        return 0;
+    }
+
+    @Override
+    public int maxIndex() {
+        return 0;
     }
 }

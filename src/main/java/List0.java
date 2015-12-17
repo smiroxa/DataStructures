@@ -1,4 +1,4 @@
-public class List0 extends ListsA
+public class List0 extends ListA
 {
     private int[] ar = null;
 
@@ -18,19 +18,19 @@ public class List0 extends ListsA
     }
 
     @Override
-    int size()
+    public int size()
     {
         return this.ar.length;
     }
 
     @Override
-    void clear()
+    public void clear()
     {
         this.ar = new int[0];
     }
 
     @Override
-    void init(int[] ini)
+    public void init(int[] ini)
     {
         if (ini == null)
             ini = new int[0];
@@ -42,7 +42,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int[] toArray()
+    public int[] toArray()
     {
         int[] tmp = new int[this.ar.length];
         for (int i = 0; i < this.ar.length; i++)
@@ -53,19 +53,19 @@ public class List0 extends ListsA
     }
 
     @Override
-    void set(int pos, int val)
+    public void set(int pos, int val)
     {
         this.ar[pos - 1] = val;
     }
 
     @Override
-    int get(int pos)
+    public int get(int pos)
     {
         return this.ar[pos - 1];
     }
 
     @Override
-    void addStart(int val)
+    public void addStart(int val)
     {
         int[] tmp = new int[this.ar.length + 1];
         tmp[0] = val;
@@ -77,7 +77,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    void addEnd(int val)
+    public void addEnd(int val)
     {
         int[] tmp = new int[this.ar.length + 1];
         for (int i = 0; i < this.ar.length; i++)
@@ -89,7 +89,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    void addPos(int pos, int val)
+    public void addPos(int pos, int val)
     {
         int[] tmp = new int[this.ar.length + 1];
 
@@ -106,7 +106,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int delStart()
+    public int delStart()
     {
         int[] tmp = new int[this.ar.length - 1];
         int res = this.ar[0];
@@ -119,7 +119,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int delEnd()
+    public int delEnd()
     {
         int[] tmp = new int[this.ar.length - 1];
         int res = this.ar[this.ar.length - 1];
@@ -132,7 +132,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int delPos(int pos)
+    public int delPos(int pos)
     {
         int[] tmp = new int[this.ar.length - 1];
         int res = this.ar[pos];
@@ -149,7 +149,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int minValue()
+    public int minValue()
     {
         int min = this.ar[0];
         for (int i = 0; i < this.ar.length; i++)
@@ -163,7 +163,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int maxValue()
+    public int maxValue()
     {
         int min = this.ar[0];
         for (int i = 0; i < this.ar.length; i++)
@@ -177,7 +177,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int minIndex()
+    public int minIndex()
     {
         int minIndex = 0;
         for (int i = 0; i < this.ar.length; i++)
@@ -191,7 +191,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    int maxIndex()
+    public int maxIndex()
     {
         int maxIndex = 0;
         for (int i = 0; i < this.ar.length; i++)
@@ -205,7 +205,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    void reverse()
+    public void reverse()
     {
         int[] tmp = new int[this.ar.length];
         for (int i = this.ar.length - 1, j = 0; i >= 0; i--, j++)
@@ -216,7 +216,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    void halfRevers()
+    public void halfRevers()
     {
         int half = this.ar.length / 2;
         int next = half + this.ar.length % 2;
@@ -229,7 +229,7 @@ public class List0 extends ListsA
     }
 
     @Override
-    void sort()
+    public void sort()
     {
         int min;
         for(int i = 0; i < this.ar.length; i++)
