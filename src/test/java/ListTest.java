@@ -1,18 +1,35 @@
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@RunWith(value = Parameterized.class)
 public class ListTest
 {
-    List0 list0 = new List0();
+    private ListA instance;
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        Object[][] data = new Object[][] {{new List0()},{new List1()}};
+        return Arrays.asList(data);
+    }
+
+    public ListTest(ListA instance) {
+        this.instance = instance;
+    }
 
     @Test
     public void initTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int exp = this.list0.size();
+        instance.init(testArr);
+        int exp = instance.size();
         assertEquals(exp, testArr.length);
     }
 
@@ -20,17 +37,17 @@ public class ListTest
     public void initTest02()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int[] Arr = this.list0.toArray();
-        assertArrayEquals(this.list0.toArray(), Arr);
+        instance.init(testArr);
+        int[] Arr = instance.toArray();
+        assertArrayEquals(instance.toArray(), Arr);
     }
 
     @Test
     public void sizeTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int exp = this.list0.size();
+        instance.init(testArr);
+        int exp = instance.size();
         assertEquals(exp, testArr.length);
     }
 
@@ -38,26 +55,26 @@ public class ListTest
     public void clearTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        this.list0.clear();
-        assertArrayEquals(this.list0.toArray(), new int[] {});
+        instance.init(testArr);
+        instance.clear();
+        assertArrayEquals(instance.toArray(), new int[] {});
     }
 
     @Test
     public void toArrayTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int[] Arr = this.list0.toArray();
+        instance.init(testArr);
+        int[] Arr = instance.toArray();
         assertArrayEquals(Arr, testArr);
     }
 
     @Test
     public void setTest01()
     {
-        this.list0.init(new int[] {10,20,30,40,50,60,70,80,90,100});
-        this.list0.set(3, 100);
-        int[] Arr = this.list0.toArray();
+        instance.init(new int[] {10,20,30,40,50,60,70,80,90,100});
+        instance.set(3, 100);
+        int[] Arr = instance.toArray();
         assertArrayEquals(new int[] {10,20,100,40,50,60,70,80,90,100}, Arr);
     }
 
@@ -65,8 +82,8 @@ public class ListTest
     public void getTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.get(3);
+        instance.init(testArr);
+        int act = instance.get(3);
         assertEquals(testArr[2], act);
     }
 
@@ -74,27 +91,27 @@ public class ListTest
     public void addStartTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        this.list0.addStart(10000);
-        assertEquals(this.list0.get(1), 10000);
+        instance.init(testArr);
+        instance.addStart(10000);
+        assertEquals(instance.get(1), 10000);
     }
 
     @Test
     public void addEndTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        this.list0.addEnd(10000);
-        assertEquals(this.list0.get(testArr.length + 1), 10000);
+        instance.init(testArr);
+        instance.addEnd(10000);
+        assertEquals(instance.get(testArr.length + 1), 10000);
     }
 
     @Test
     public void addPosTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        this.list0.addPos(5, 10000);
-        int[] Arr = this.list0.toArray();
+        instance.init(testArr);
+        instance.addPos(5, 10000);
+        int[] Arr = instance.toArray();
         assertArrayEquals(new int[] {10,20,30,40,10000,50,60,70,80,90,100}, Arr);
     }
 
@@ -102,8 +119,8 @@ public class ListTest
     public void delStartTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.delStart();
+        instance.init(testArr);
+        int act = instance.delStart();
         assertEquals(testArr[0], act);
     }
 
@@ -111,8 +128,8 @@ public class ListTest
     public void delEndTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.delEnd();
+        instance.init(testArr);
+        int act = instance.delEnd();
         assertEquals(testArr[testArr.length - 1], act);
     }
 
@@ -120,16 +137,16 @@ public class ListTest
     public void delPosTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.delPos(5);
+        instance.init(testArr);
+        int act = instance.delPos(5);
         assertEquals(testArr[5], act);
     }
     @Test(expected= IndexOutOfBoundsException.class)
     public void delPosTest02()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.delPos(11);
+        instance.init(testArr);
+        int act = instance.delPos(11);
         assertEquals(testArr[5], act);
     }
 
@@ -137,8 +154,8 @@ public class ListTest
     public void minTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.minValue();
+        instance.init(testArr);
+        int act = instance.minValue();
         assertEquals(10, act);
     }
 
@@ -146,8 +163,8 @@ public class ListTest
     public void maxTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.maxValue();
+        instance.init(testArr);
+        int act = instance.maxValue();
         assertEquals(100, act);
     }
 
@@ -155,8 +172,8 @@ public class ListTest
     public void minIndexTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.minIndex();
+        instance.init(testArr);
+        int act = instance.minIndex();
         assertEquals(0, act);
     }
 
@@ -164,8 +181,8 @@ public class ListTest
     public void maxIndexTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        int act = this.list0.maxIndex();
+        instance.init(testArr);
+        int act = instance.maxIndex();
         assertEquals(9, act);
     }
 
@@ -173,9 +190,9 @@ public class ListTest
     public void reverseTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
-        this.list0.init(testArr);
-        this.list0.reverse();
-        int[] act = this.list0.toArray();
+        instance.init(testArr);
+        instance.reverse();
+        int[] act = instance.toArray();
         assertArrayEquals(new int[] {100,90,80,70,60,50,40,30,20,10}, act);
     }
 
@@ -183,9 +200,9 @@ public class ListTest
     public void halfReversTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100,110};
-        this.list0.init(testArr);
-        this.list0.halfRevers();
-        int[] act = this.list0.toArray();
+        instance.init(testArr);
+        instance.halfRevers();
+        int[] act = instance.toArray();
         assertArrayEquals(new int[] {70,80,90,100,110,60,10,20,30,40,50}, act);
     }
 
@@ -193,9 +210,9 @@ public class ListTest
     public void sortTest01()
     {
         int[] testArr = new int[] {100,90,10,40,80,70,20,30,50,60};
-        this.list0.init(testArr);
-        this.list0.sort();
-        int[] Arr = this.list0.toArray();
+        instance.init(testArr);
+        instance.sort();
+        int[] Arr = instance.toArray();
         assertArrayEquals(new int[] {10,20,30,40,50,60,70,80,90,100}, Arr);
     }
 }
