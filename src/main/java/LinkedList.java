@@ -1,4 +1,4 @@
-public class LinkList1 extends ListA
+public class LinkedList extends ListA
 {
     private Node root = null;
 
@@ -101,6 +101,5 @@ public class LinkList1 extends ListA
     {
         int data;
         Node next = null;
-        Node prev = null;
     }
 }

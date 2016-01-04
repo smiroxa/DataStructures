@@ -1,4 +1,4 @@
-public class BTree extends ListA
+public class BinaryTree extends ListA
 {
     public int size()  // размер дерева
     {

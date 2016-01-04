@@ -1,51 +1,51 @@
-public class List0 extends ListA
+import java.util.Arrays;
+
+public class ArrayList1 extends ListA
 {
     private int[] ar = null;
+    private int top = 0;
 
-    public List0() {}
-
-    public List0(int[] ini)
+    public ArrayList1()
     {
-        this.init(ini);
     }
 
-    public List0(int length)
+    public ArrayList1(int[] ini)
     {
-        this.ar = new int[length];
-        for(int i = 0; i <  this.ar.length; i++) {this.ar[i] = (int) Math.floor(Math.random() * 10);
-            System.out.print(this.ar[i] + "  ");
-        }
+        init(ini);
     }
 
     @Override
     public int size()
     {
-        return this.ar.length;
+        return this.top;
     }
 
     @Override
     public void clear()
     {
-        this.ar = new int[0];
+        this.top = 0;
     }
 
     @Override
     public void init(int[] ini)
     {
-        if (ini == null)
+        if(ini == null)
+        {
             ini = new int[0];
+        }
         this.ar = new int[ini.length];
         for (int i = 0; i < ini.length; i++)
         {
             this.ar[i] = ini[i];
         }
+        this.top = this.ar.length;
     }
 
     @Override
     public int[] toArray()
     {
-        int[] tmp = new int[this.ar.length];
-        for (int i = 0; i < this.ar.length; i++)
+        int[] tmp = new int[size()];
+        for (int i = 0; i < size(); i++)
         {
             tmp[i] = this.ar[i];
         }
@@ -67,7 +67,7 @@ public class List0 extends ListA
     @Override
     public void addStart(int val)
     {
-        int[] tmp = new int[this.ar.length + 1];
+        int[] tmp = new int[++this.top];
         tmp[0] = val;
         for (int i = 0; i < this.ar.length; i++)
         {
@@ -79,7 +79,7 @@ public class List0 extends ListA
     @Override
     public void addEnd(int val)
     {
-        int[] tmp = new int[this.ar.length + 1];
+        int[] tmp = new int[this.top + 1];
         for (int i = 0; i < this.ar.length; i++)
         {
             tmp[i] = this.ar[i];
@@ -91,8 +91,8 @@ public class List0 extends ListA
     @Override
     public void addPos(int pos, int val)
     {
-        int[] tmp = new int[this.ar.length + 1];
-
+//        System.out.println(Arrays.toString(this.ar));
+        int[] tmp = new int[++this.top];
         for (int i = 0; i < pos - 1; i++)
         {
             tmp[i] = this.ar[i];
@@ -103,48 +103,42 @@ public class List0 extends ListA
             tmp[i] = this.ar[i-1];
         }
         this.ar = tmp;
+//        System.out.println(Arrays.toString(this.ar));
     }
 
     @Override
     public int delStart()
     {
-        int[] tmp = new int[this.ar.length - 1];
         int res = this.ar[0];
-        for (int i = 1; i < this.ar.length; i++)
+        int[] tmp = new int[this.top - 1];
+        for (int i = 1; i < this.top; i++)
         {
             tmp[i - 1] = this.ar[i];
         }
         this.ar = tmp;
+        this.top = tmp.length;
         return res;
     }
 
     @Override
     public int delEnd()
     {
-        int[] tmp = new int[this.ar.length - 1];
-        int res = this.ar[this.ar.length - 1];
-        for (int i = 0; i <= tmp.length - 1; i++)
-        {
-            tmp[i] = this.ar[i];
-        }
-        this.ar = tmp;
-        return res;
+        return ar[--top];
     }
 
     @Override
     public int delPos(int pos)
     {
-        int[] tmp = new int[this.ar.length - 1];
-        int res = this.ar[pos];
+        int res = ar[pos];
+        int[] tmp = new int[top];
 
         for (int i = 0; i < tmp.length; i++)
         {
-            if (i != pos)
+            if(i != pos)
             {
                 tmp[i] = this.ar[i];
             }
         }
-        this.ar = tmp;
         return res;
     }
 
@@ -152,7 +146,7 @@ public class List0 extends ListA
     public int minValue()
     {
         int min = this.ar[0];
-        for (int i = 0; i < this.ar.length; i++)
+        for (int i = 0; i < this.top; i++)
         {
             if (this.ar[i] < min)
             {
@@ -166,7 +160,7 @@ public class List0 extends ListA
     public int maxValue()
     {
         int min = this.ar[0];
-        for (int i = 0; i < this.ar.length; i++)
+        for (int i = 0; i < this.top; i++)
         {
             if (this.ar[i] > min)
             {
@@ -237,8 +231,8 @@ public class List0 extends ListA
             min = i;
             for(int j = i + 1; j < this.ar.length; j++)
             {
-              if(this.ar[j] < this.ar[min])
-                min = j;
+                if(this.ar[j] < this.ar[min])
+                    min = j;
             }
             int tmp = this.ar[i];
             this.ar[i] = this.ar[min];

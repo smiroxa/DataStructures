@@ -1,19 +1,22 @@
-public class List2 extends ListA
+import java.util.Arrays;
+
+public class ArrayList2 extends ListA
 {
     private int[] ar = new int[30];
     private int end   = 15;
     private int start = 15;
 
-    public List2()
+    public ArrayList2()
     {
     }
-    public List2(int[] ini)
+    public ArrayList2(int[] ini)
     {
         init(ini);
     }
 
     @Override
-    public int size() {
+    public int size()
+    {
         return this.end - this.start;
     }
 
@@ -26,6 +29,10 @@ public class List2 extends ListA
     @Override
     public void init(int[] ini)
     {
+        if(ini== null)
+        {
+            ini=new int[0];
+        }
         this.start = this.ar.length/2 - ini.length/2;
         for (int i = 0; i < ini.length; i++)
         {
@@ -90,7 +97,18 @@ public class List2 extends ListA
     @Override
     public int delPos(int pos)
     {
-        return 0;
+        checkPositionOrException(pos);
+        int res = this.ar[this.start + pos - 1];
+        int[] temp = new int[this.end - this.start - 1];
+        for (int j = 0, i = 0; i < temp.length + 1; i++, j++)
+        {
+            if(i != pos - 1)
+            {
+                temp[j] = this.ar[start + i];
+            }
+        }
+//        this.init(temp);
+        return res;
     }
 
     @Override
@@ -133,5 +151,21 @@ public class List2 extends ListA
     public void sort()
     {
 
+    }
+
+    private void checkSizeNotNullOrException()
+    {
+        if(size() == 0)
+        {
+            throw new NullPointerException();
+        }
+    }
+
+    private void checkPositionOrException(int position)
+    {
+        if(position - 1 > size() || position - 1 < 0)
+        {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }

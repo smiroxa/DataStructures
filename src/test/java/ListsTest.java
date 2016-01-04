@@ -10,19 +10,26 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
-public class ListTest
+public class ListsTest
 {
     private ListA instance;
 
     @Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] {{new List0()},{new List1()}};
+        Object[][] data = new Object[][]
+                {
+                        {new ArrayList0()},
+                        {new ArrayList1()},
+                        {new ArrayList2()}
+                };
         return Arrays.asList(data);
     }
 
-    public ListTest(ListA instance) {
+    public ListsTest(ListA instance) {
         this.instance = instance;
     }
+
+
 
     @Test
     public void initTest01()
@@ -73,9 +80,9 @@ public class ListTest
     public void setTest01()
     {
         instance.init(new int[] {10,20,30,40,50,60,70,80,90,100});
-        instance.set(3, 100);
+        instance.set(3, 300000);
         int[] Arr = instance.toArray();
-        assertArrayEquals(new int[] {10,20,100,40,50,60,70,80,90,100}, Arr);
+        assertArrayEquals(new int[] {10,20,300000,40,50,60,70,80,90,100}, Arr);
     }
 
     @Test
@@ -111,8 +118,8 @@ public class ListTest
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
         instance.init(testArr);
         instance.addPos(5, 10000);
-        int[] Arr = instance.toArray();
-        assertArrayEquals(new int[] {10,20,30,40,10000,50,60,70,80,90,100}, Arr);
+        int[] arr = instance.toArray();
+        assertArrayEquals(new int[] {10,20,30,40,10000,50,60,70,80,90,100}, arr);
     }
 
     @Test
@@ -154,6 +161,15 @@ public class ListTest
     public void minTest01()
     {
         int[] testArr = new int[] {10,20,30,40,50,60,70,80,90,100};
+        instance.init(testArr);
+        int act = instance.minValue();
+        assertEquals(10, act);
+    }
+
+    @Test
+    public void minTest02()
+    {
+        int[] testArr = new int[] {100,20,30,40,50,60,70,80,90,10};
         instance.init(testArr);
         int act = instance.minValue();
         assertEquals(10, act);
